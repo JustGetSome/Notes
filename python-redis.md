@@ -31,11 +31,14 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 ### 一些应用场景
 
 * 访问统计
+
     page1 = select count from page1
     conn.set("page:1", page1)
     for every visit:
         conn.incr("page:1")
     conn.get("page:1") if page1 has been loaded and show()
+
+
 
 * 社交圈应用
 
@@ -55,6 +58,8 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 通过集合运算找到共同成员：
 
     conn.sinter('game:WOW', 'sport:basketball')
+
+
 
 * 消息队列
 `Master`负责作业的生产，分发以及获取结果。`Slaver`负责消费作业并返回结果。
@@ -78,7 +83,6 @@ Sample:
 
 
     class ServerDispatchThread(threading.Thread):
-
         def __init__(self):
             super(ServerDispatchThread, self).__init__()
 
@@ -94,7 +98,6 @@ Sample:
 
 
     class ServerResultHandleThread(threading.Thread):
-
         def __init__(self):
             super(ServerResultHandleThread, self).__init__()
 
@@ -116,7 +119,6 @@ Sample:
 
 
     class WorkerThread(threading.Thread):
-
         def __init__(self, channel):
             super(WorkerThread, self).__init__()
             self.channel = channel
@@ -134,7 +136,9 @@ Sample:
                 if not ret:
                     print 'Worker{} return job {} failed'.format(self.channel, job['data'])
 
-    Slaver = Slaver()
-    Master = Master()
-    Slaver()
-    Master()        
+
+    if __name__ == '__main__':
+        Slaver = Slaver()
+        Master = Master()
+        Slaver()
+        Master()        
