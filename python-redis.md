@@ -32,11 +32,11 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 
 * 访问统计
 
-    count = select_from(page1)
-    conn.set("page:1", page1)
-    for every visit:
-        conn.incr("page:1")
-    conn.get("page:1") if page1 has been loaded and show()
+        count = select_from(page1)
+        conn.set("page:1", page1)
+        for every visit:
+            conn.incr("page:1")
+        conn.get("page:1") if page1 has been loaded and show()
 
 
 * 社交圈应用
