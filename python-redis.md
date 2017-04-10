@@ -21,7 +21,7 @@ Redis的连接实例据说是线程安全的，很6，另外可以用维持一�
 
 Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 
-    pipe = conn.piprline()  # transaction参数默认为True
+    pipe = conn.piprline()  # transaction 参数默认为 True
     conn.set(bla bla)
     conn.setex(bla bla)
     conn.mget(bla bla)
@@ -31,6 +31,7 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 ### 一些应用场景
 
 * 访问统计
+
 
     page1 = select count from page1
     conn.set("page:1", page1)
@@ -62,6 +63,7 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 
 
 * 消息队列
+
 `Master`负责作业的生产，分发以及获取结果。`Slaver`负责消费作业并返回结果。
 
 Sample:
@@ -108,7 +110,6 @@ Sample:
             for res in p.listen():
                 if res['type'] != 'message': continue
                 print 'Received job {}'.format(res['data'])
-
 
 
     def Slaver():
