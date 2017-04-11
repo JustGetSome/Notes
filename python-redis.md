@@ -141,3 +141,6 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
             Master = Master()
             Slaver()
             Master()        
+
+
+>### 恩，上面的代码看起来好丑
