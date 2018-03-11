@@ -15,4 +15,4 @@
     reactor.run()
 
 
-工厂管理所有连接，创建protocol对象来处理每个成功的连接，然后由protocol接管剩余工作，Endpoint就是端口的抽象对象，可以为其添加监视者以及工厂。
+- Factory管理所有连接，创建protocol对象来处理各个成功的连接，然后由protocol内容接管剩余工作，Endpoint就是Server的抽象对象，可以为其添加监视者以及工厂, reactor即event loop。
