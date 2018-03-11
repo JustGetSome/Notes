@@ -21,10 +21,10 @@ Redis的连接实例据说是线程安全的，很6，另外可以用维持一�
 
 Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 
-    pipe = conn.piprline()  # transaction 参数默认为 True
-    conn.set(bla bla)
-    conn.setex(bla bla)
-    conn.mget(bla bla)
+    pipe = conn.pipeline()  # transaction参数默认为True
+    conn.set(blabla)
+    conn.setex(blabla)
+    conn.mget(blabla)
     pipe.execute()
 
 
@@ -106,7 +106,8 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
                 p = conn.pubsub()
                 p.subcribe(chr)
                 for res in p.listen():
-                    if res['type'] != 'message': continue
+                    if res['type'] != 'message':
+                        continue
                     print 'Received job {}'.format(res['data'])
 
 
@@ -127,7 +128,8 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
                 p = conn.pubsub()
                 p.subcribe(self.channel)
                 for job in p.listen():
-                    if job['type'] != 'message': continue
+                    if job['type'] != 'message':
+                        continue
                     print 'Worker{} run job {}'.format(self.channel, job['data'])
                     time.sleep(2)
                     print 'Job finished'
@@ -137,10 +139,10 @@ Redis提供了`pipeline`对象来支持批量操作，据说有原子性：
 
 
         if __name__ == '__main__':
-            Slaver = Slaver()
-            Master = Master()
-            Slaver()
-            Master()        
+            SlaverStart = Slaver()
+            MasterStart = Master()
+            SlaverStart()
+            MasterStart()        
 
 
-> 恩，上面的代码看起来好丑 #)
+> 恩，一本正经地乱写一通 #)
