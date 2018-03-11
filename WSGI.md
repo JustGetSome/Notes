@@ -65,7 +65,7 @@ Sample:
         def __call__(self, path):
             def wrapper(app):
                 self.path[path] = app
-            rrturn wrapper
+            return wrapper
 
         def route(self, env, start_resp):
             req_path = env['PATH_INFO']
