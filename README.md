@@ -1,2 +1,2 @@
 # Notes
-Just some notes, ~~记录生活点滴~~
+Just some notes, ~~snapshot of the funny moment~~ ;)
